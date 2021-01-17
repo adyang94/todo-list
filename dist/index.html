@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="resetStyleSheet" href="./reset.css">
+    <link rel="stylesheet" type="text/css" href="./stylesheet.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+</head>
+<body>
+    <div class="landingPage">
+        <div class="titleContainer">
+            <h1 class="title">Todo List</h1>
+        </div>
+        <div class="sidebarContainer">
+            <!-- This includes adding new groups and displaying which groups show up. -->
+            <div class="toggleContainer">
+                <div class="navLine"></div>
+                <div class="navLine"></div>
+                <div class="navLine"></div>
+            </div>
+            <div class="sidebar">
+                <button class="newGroupBtn">New Group</button>
+                <button class="closeSidebarBtn">X</button>
+                <div class="newGroupInputContainer" style = "display: none">
+                    <input type="text" class="newGroupTitle" placeholder="Type group name here">
+                    <button class="submitNewGroupBtn" type="submit">Add</button>
+                </div>
+                <div class="groupsContainer">
+                    
+                </div>
+            </div>
+        </div>
+        <main class = 'main'>
+            <!-- List of relevant tasks here -->
+            List of relevant tasks here
+        </main>
+        <div class="footer">
+            <button class="addTaskBtn">+</button>
+            <!-- include git hub and footer details -->
+            footer
+        </div>
+
+    </div>
+    <!-- NEW GROUPING OF TASKS -->
+
+    <!-- NEW TASKS -->
+    <div id="popOutForm" class="popOutFormOff">
+        <div class="form">
+            Title:
+            <input type="text" class="popOutTitle" placeholder="Add Title"><br>
+            Description:
+            <input type="text" class="popOutDescription" placeholder="Add Description"><br>
+            Due Date:
+            <input type="text" class="popOutDueDate" placeholder="Add Due Date"><br>
+            Group:
+            <input type="text" class="popOutGroup" placeholder="Add group here">
+            <!-- drop down list for existing categories -->
+            <br>
+            <button type="submit" class="submitBtn">Submit</button>
+        </div>
+    </div>
+    <script src="./main.js"></script>
+</body>
+</html>
