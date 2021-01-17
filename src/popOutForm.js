@@ -26,6 +26,7 @@ const popOutSetup = (() => {
     addTaskButton.addEventListener('click', () => {
         popOutForm.classList.remove('popOutFormOff');
         popOutForm.classList.add('popOutFormOn');
+        console.log('hello');
     });
     renderTasks(groupSelected, tasks);
 })();

@@ -12,7 +12,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _sidebar__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./sidebar */ "./src/sidebar.js");
 /* harmony import */ var _localStorage__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./localStorage */ "./src/localStorage.js");
 /* harmony import */ var _renderTasks__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./renderTasks */ "./src/renderTasks.js");
+/* harmony import */ var _popOutForm__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./popOutForm */ "./src/popOutForm.js");
 //CONST AND VARIABLES--------------------------------------------
+
 
 
 
@@ -20,11 +22,12 @@ __webpack_require__.r(__webpack_exports__);
 //FUNCTIONS------------------------------------------------------
 
 //get old info
+
 (0,_renderTasks__WEBPACK_IMPORTED_MODULE_2__.renderTasks)('', _localStorage__WEBPACK_IMPORTED_MODULE_1__.localStorageModule.getTasks());
 (0,_sidebar__WEBPACK_IMPORTED_MODULE_0__.renderGroups)(_localStorage__WEBPACK_IMPORTED_MODULE_1__.localStorageModule.getGroups());
 
 //SCRIPT---------------------------------------------------------
-console.log('JS working');
+console.log('JS file working');
 
 /***/ }),
 
@@ -72,9 +75,11 @@ const localStorageModule = (() => {
         function storeTasksAndGroups(tasks, groups) {
             if (tasks != '') {
                 localStorage.setItem("tasks", JSON.stringify(tasks));
+                console.log({tasks});
             }
             if (groups != '') {
                 localStorage.setItem("groups", JSON.stringify(groups));
+                console.log({groups});
             }
         };
         function addNewInfo(newTask, newGroup) {
@@ -90,6 +95,64 @@ const localStorageModule = (() => {
     return {getTasks, getGroups, storeTasksAndGroups, addNewInfo, getGroupSelected,storeGroupSelected};
 })();
 //SCRIPT---------------------------------------------------------
+
+
+/***/ }),
+
+/***/ "./src/popOutForm.js":
+/*!***************************!*\
+  !*** ./src/popOutForm.js ***!
+  \***************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "popOutSetup": () => /* binding */ popOutSetup
+/* harmony export */ });
+/* harmony import */ var _localStorage__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./localStorage */ "./src/localStorage.js");
+/* harmony import */ var _renderTasks__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./renderTasks */ "./src/renderTasks.js");
+//CONST AND VARIABLES--------------------------------------------
+
+
+
+
+//FUNCTIONS------------------------------------------------------
+
+const popOutSetup = (() => {
+    let popOutForm = document.querySelector('#popOutForm');
+    let submitBtn = document.querySelector('.submitBtn');
+    let popOutTitle = document.querySelector('.popOutTitle');
+    let popOutDescription = document.querySelector('.popOutDescription');
+    let popOutDueDate = document.querySelector('.popOutDueDate');
+    let newTask;
+    let addTaskButton = document.querySelector('.addTaskBtn');
+    let popOutGroup = document.querySelector('.popOutGroup');
+
+    submitBtn.addEventListener('click', () => {
+        popOutForm.classList.remove('popOutFormOn');
+        popOutForm.classList.add('popOutFormOff');
+
+        newTask = new addNewTask(popOutTitle, popOutDescription, popOutDueDate, popOutGroup);
+        _localStorage__WEBPACK_IMPORTED_MODULE_0__.localStorageModule.addNewInfo(newTask, '');
+        (0,_renderTasks__WEBPACK_IMPORTED_MODULE_1__.renderTasks)(_localStorage__WEBPACK_IMPORTED_MODULE_0__.groupSelected, _localStorage__WEBPACK_IMPORTED_MODULE_0__.localStorageModule.getTasks());
+    });
+    addTaskButton.addEventListener('click', () => {
+        popOutForm.classList.remove('popOutFormOff');
+        popOutForm.classList.add('popOutFormOn');
+        console.log('hello');
+    });
+    (0,_renderTasks__WEBPACK_IMPORTED_MODULE_1__.renderTasks)(_localStorage__WEBPACK_IMPORTED_MODULE_0__.groupSelected, _localStorage__WEBPACK_IMPORTED_MODULE_0__.tasks);
+})();
+
+function addNewTask(title, description, dueDate, group) {
+    this.title = title.value;
+    this.description = description.value;
+    this.dueDate = dueDate.value;
+    this.taskGroup = group.value;
+
+}
+//SCRIPT---------------------------------------------------------
+
 
 
 /***/ }),

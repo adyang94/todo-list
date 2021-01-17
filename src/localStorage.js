@@ -29,9 +29,11 @@ const localStorageModule = (() => {
         function storeTasksAndGroups(tasks, groups) {
             if (tasks != '') {
                 localStorage.setItem("tasks", JSON.stringify(tasks));
+                console.log({tasks});
             }
             if (groups != '') {
                 localStorage.setItem("groups", JSON.stringify(groups));
+                console.log({groups});
             }
         };
         function addNewInfo(newTask, newGroup) {
