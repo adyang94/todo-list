@@ -23,13 +23,9 @@ __webpack_require__.r(__webpack_exports__);
 
 //get old info
 console.log('1');
-if (tasks != null) {
-    (0,_renderTasks__WEBPACK_IMPORTED_MODULE_2__.renderTasks)('', _localStorage__WEBPACK_IMPORTED_MODULE_1__.localStorageModule.getTasks());
-}
+(0,_renderTasks__WEBPACK_IMPORTED_MODULE_2__.renderTasks)('', _localStorage__WEBPACK_IMPORTED_MODULE_1__.localStorageModule.getTasks());
+(0,_sidebar__WEBPACK_IMPORTED_MODULE_0__.renderGroups)(_localStorage__WEBPACK_IMPORTED_MODULE_1__.localStorageModule.getGroups());
 
-if (_localStorage__WEBPACK_IMPORTED_MODULE_1__.groups) {
-    (0,_sidebar__WEBPACK_IMPORTED_MODULE_0__.renderGroups)(_localStorage__WEBPACK_IMPORTED_MODULE_1__.localStorageModule.getGroups());
-}
 
 //SCRIPT---------------------------------------------------------
 console.log('JS file working');
@@ -71,11 +67,16 @@ const localStorageModule = (() => {
     //  groups and tasks functions below:
         function getTasks() {
             tasks = JSON.parse(localStorage.getItem('tasks'));
-            console.log(tasks);
+            if (!tasks) {
+                tasks = [];
+            }
             return tasks;
         };
         function getGroups() {
             groups = JSON.parse(localStorage.getItem('groups'));
+            if (!groups) {
+                groups = [];    
+            }
             return groups;
         };
         function storeTasksAndGroups(tasks, groups) {
