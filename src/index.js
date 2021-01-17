@@ -8,13 +8,9 @@ import { popOutSetup } from './popOutForm';
 
 //get old info
 console.log('1');
-if (tasks != null) {
-    renderTasks('', localStorageModule.getTasks());
-}
+renderTasks('', localStorageModule.getTasks());
+renderGroups(localStorageModule.getGroups());
 
-if (groups) {
-    renderGroups(localStorageModule.getGroups());
-}
 
 //SCRIPT---------------------------------------------------------
 console.log('JS file working');

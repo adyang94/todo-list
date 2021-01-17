@@ -22,9 +22,10 @@ __webpack_require__.r(__webpack_exports__);
 //FUNCTIONS------------------------------------------------------
 
 //get old info
-
+console.log('1');
 (0,_renderTasks__WEBPACK_IMPORTED_MODULE_2__.renderTasks)('', _localStorage__WEBPACK_IMPORTED_MODULE_1__.localStorageModule.getTasks());
 (0,_sidebar__WEBPACK_IMPORTED_MODULE_0__.renderGroups)(_localStorage__WEBPACK_IMPORTED_MODULE_1__.localStorageModule.getGroups());
+
 
 //SCRIPT---------------------------------------------------------
 console.log('JS file working');
@@ -50,8 +51,9 @@ let tasks = [];
 let groupSelected;
 //FUNCTIONS------------------------------------------------------
 const localStorageModule = (() => {
-    console.log('localStorageModule running');
-    
+    console.log('localStorageModule running!!!');
+    console.log({groups});
+    console.log({tasks});
     // groupSelected functions below:
         function storeGroupSelected(groupSelected) {
             if(groupSelected != '') {
@@ -65,11 +67,16 @@ const localStorageModule = (() => {
     //  groups and tasks functions below:
         function getTasks() {
             tasks = JSON.parse(localStorage.getItem('tasks'));
-            console.log(tasks);
+            if (!tasks) {
+                tasks = [];
+            }
             return tasks;
         };
         function getGroups() {
             groups = JSON.parse(localStorage.getItem('groups'));
+            if (!groups) {
+                groups = [];    
+            }
             return groups;
         };
         function storeTasksAndGroups(tasks, groups) {
@@ -256,6 +263,7 @@ __webpack_require__.r(__webpack_exports__);
 
 //CONST AND VARIABLES--------------------------------------------
 
+//
 //FUNCTIONS------------------------------------------------------
 const addNewGroup = (() => {
     //add new group in the sidebar menu.
@@ -281,12 +289,11 @@ const addNewGroup = (() => {
     })
 })();
 function renderGroups() {
-    let groupsContainer = document.querySelector('.groupsContainer');
+        let groupsContainer = document.querySelector('.groupsContainer');
     //remove all groups and render again.
     while(groupsContainer.firstChild) {
         groupsContainer.removeChild(groupsContainer.firstChild);
     };
-    console.log('REMOVE ALL GROUPS');
     //rendering groups
     for (let i = 0; i < _localStorage__WEBPACK_IMPORTED_MODULE_0__.groups.length; i++) {
         let name = _localStorage__WEBPACK_IMPORTED_MODULE_0__.groups[i];

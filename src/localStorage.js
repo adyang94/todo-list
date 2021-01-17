@@ -20,11 +20,16 @@ const localStorageModule = (() => {
     //  groups and tasks functions below:
         function getTasks() {
             tasks = JSON.parse(localStorage.getItem('tasks'));
-            console.log(tasks);
+            if (!tasks) {
+                tasks = [];
+            }
             return tasks;
         };
         function getGroups() {
             groups = JSON.parse(localStorage.getItem('groups'));
+            if (!groups) {
+                groups = [];    
+            }
             return groups;
         };
         function storeTasksAndGroups(tasks, groups) {
