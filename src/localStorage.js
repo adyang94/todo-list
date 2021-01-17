@@ -4,8 +4,9 @@ let tasks = [];
 let groupSelected;
 //FUNCTIONS------------------------------------------------------
 const localStorageModule = (() => {
-    console.log('localStorageModule running');
-    
+    console.log('localStorageModule running!!!');
+    console.log({groups});
+    console.log({tasks});
     // groupSelected functions below:
         function storeGroupSelected(groupSelected) {
             if(groupSelected != '') {

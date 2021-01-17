@@ -4,6 +4,7 @@ import { renderTasks } from "./renderTasks";
 
 //CONST AND VARIABLES--------------------------------------------
 
+//
 //FUNCTIONS------------------------------------------------------
 const addNewGroup = (() => {
     //add new group in the sidebar menu.
@@ -29,12 +30,11 @@ const addNewGroup = (() => {
     })
 })();
 function renderGroups() {
-    let groupsContainer = document.querySelector('.groupsContainer');
+        let groupsContainer = document.querySelector('.groupsContainer');
     //remove all groups and render again.
     while(groupsContainer.firstChild) {
         groupsContainer.removeChild(groupsContainer.firstChild);
     };
-    console.log('REMOVE ALL GROUPS');
     //rendering groups
     for (let i = 0; i < groups.length; i++) {
         let name = groups[i];
