@@ -120,6 +120,9 @@ function renderTasks (groupSelected, tasks) {
     while(main.firstChild) {
         main.removeChild(main.firstChild);
     }
+    if(tasks == null || undefined) {
+        return
+    }
     for(let i=0; i < tasks.length; i++){
         //task container
         let taskContainer = document.createElement('div');
